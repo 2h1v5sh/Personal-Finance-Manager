@@ -7,8 +7,8 @@ import { Toaster } from "sonner";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Welth",
-  description: "One stop Finance Platform",
+  title: "FinAI - Personal Finance Manager",
+  description: "AI-powered personal finance management platform with intelligent insights and budgeting tools",
 };
 
 export default function RootLayout({ children }) {
@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
 
           <footer className="bg-blue-50 py-12">
             <div className="container mx-auto px-4 text-center text-gray-600">
-              <p>Made with 💗 by RoadsideCoder</p>
+              <p>Made by Bhavesh and Naman</p>
             </div>
           </footer>
         </body>

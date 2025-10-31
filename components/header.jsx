@@ -1,10 +1,9 @@
 import React from "react";
 import { Button } from "./ui/button";
-import { PenBox, LayoutDashboard } from "lucide-react";
+import { PenBox, LayoutDashboard, Bot } from "lucide-react";
 import Link from "next/link";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { checkUser } from "@/lib/checkUser";
-import Image from "next/image";
 
 const Header = async () => {
   await checkUser();
@@ -12,14 +11,13 @@ const Header = async () => {
   return (
     <header className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b">
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link href="/">
-          <Image
-            src={"/logo.png"}
-            alt="Welth Logo"
-            width={200}
-            height={60}
-            className="h-12 w-auto object-contain"
-          />
+        <Link href="/" className="flex items-center space-x-2">
+          <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            FinAI
+          </div>
+          <div className="text-sm text-gray-600 font-medium hidden md:block">
+            Personal Finance Manager
+          </div>
         </Link>
 
         {/* Navigation Links - Different for signed in/out users */}
@@ -47,6 +45,15 @@ const Header = async () => {
               <Button variant="outline">
                 <LayoutDashboard size={18} />
                 <span className="hidden md:inline">Dashboard</span>
+              </Button>
+            </Link>
+            <Link
+              href="/chat"
+              className="text-gray-600 hover:text-blue-600 flex items-center gap-2"
+            >
+              <Button variant="outline">
+                <Bot size={18} />
+                <span className="hidden md:inline">AI Advisor</span>
               </Button>
             </Link>
             <a href="/transaction/create">

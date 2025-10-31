@@ -17,6 +17,7 @@ model User {
   transactions  Transaction[]
   accounts      Account[]
   budgets       Budget[]
+  chatMessages  ChatMessage[]
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
 
@@ -99,4 +100,24 @@ enum RecurringInterval {
   WEEKLY
   MONTHLY
   YEARLY
+}
+
+// Chat models for AI advisor
+model ChatMessage {
+  id        String   @id @default(uuid())
+  content   String
+  role      MessageRole
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([userId, createdAt])
+  @@map("chat_messages")
+}
+
+enum MessageRole {
+  USER
+  ASSISTANT
 }
